@@ -98,6 +98,11 @@
             font-size: 18px;
         }
 
+        .logo:hover {
+            color: var(--primary);
+            font: bold;
+        }
+
         nav {
             display: flex;
             gap: 20px;
@@ -328,6 +333,43 @@
             color: white;
         }
 
+        .socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .socials a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* .socials a {
+            margin: 0 10px;
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+        } */
+
+        .socials svg {
+            width: 18px;
+            fill: var(--dark);
+        }
+
+        .socials a:hover {
+            background: var(--primary);
+        }
+
+        .socials a:hover svg {
+            fill: white;
+        }
+
         /* FLOAT BUTTONS */
         .whatsapp-float {
             position: fixed;
@@ -426,7 +468,7 @@
                 style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352');"></div>
             <div class="hero-slide" alt="foto nutrição 3"
                 style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd');"></div>
-            <div class="hero-slide"alt="foto nutrição 4"
+            <div class="hero-slide" alt="foto nutrição 4"
                 style="background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061');"></div>
         </div>
 
@@ -464,6 +506,20 @@
 
     <footer>
         <p>© 2026 SOFTRIZ - Todos os direitos reservados</p>
+        <div class="socials">
+            <a href="https://instagram.com/costanortehospedagens" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10z" />
+                </svg>
+            </a>
+            <a href="https://facebook.com/" target="_blank" aria-label="Facebook">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z" />
+                </svg>
+            </a>
+        </div>
     </footer>
 
     <!-- Botão WhatsApp Fixo -->
