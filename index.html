@@ -17,14 +17,14 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <link rel="preload" as="image" href="hero1.webp">
-    <link rel="preload" as="image" href="hero2.webp">
-    <link rel="preload" as="image" href="hero3.webp">
-    <link rel="preload" as="image" href="hero4.webp">
+    <link rel="preload" as="image" href="img/hero1.webp">
+    <link rel="preload" as="image" href="img/hero2.webp">
+    <link rel="preload" as="image" href="img/hero3.webp">
+    <link rel="preload" as="image" href="img/hero4.webp">
 
-    <link rel="icon" type="image/jpeg" sizes="32x32" href="logo.jpeg">
-    <link rel="icon" type="image/jpeg" sizes="16x16" href="logo.jpeg">
-    <link rel="apple-touch-icon" href="logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="img/logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="img/logo.jpeg">
+    <link rel="apple-touch-icon" href="img/logo.jpeg">
 
     <style>
         :root {
@@ -43,12 +43,30 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'Open Sans - bold';
+            src: url('fonts/OpenSans-Bold.ttf') format('truetype');
+            /* Ajuste o caminho e o formato */
+            /* font-weight: normal; */
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Open Sans', sans-serif;
             font-weight: 600;
+        }
+
+        h2,
+        h3,
+        p {
+            margin-bottom: 6px;
+        }
+
+        b {
+            font-family: 'Open Sans - bold';
         }
 
         body {
@@ -124,6 +142,12 @@
         @media (max-width: 768px) {
             .h_logo {
                 flex-direction: column;
+                /* align-items: center; */
+            }
+        }
+
+        @media (max-width: 1212px) {
+            .h_logo {
                 align-items: center;
             }
         }
@@ -204,10 +228,17 @@
             pointer-events: all;
         }
 
+        @media (min-width: 769px) {
+            nav {
+                text-align: center;
+                align-items: center;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 position: fixed;
-                top: 140px;
+                top: 110px;
                 right: -100%;
                 background: var(--bg);
                 flex-direction: column;
@@ -305,13 +336,14 @@
             transition: 0.3s;
         }
 
-        .btn:hover {
+        .btn:hover,
+        .btn.active {
             background: var(--primary-dark);
             transform: translateY(-2px);
         }
 
         section {
-            padding: 80px 30px;
+            padding: 83px 30px;
             max-width: 1100px;
             margin: auto;
             opacity: 0;
@@ -325,6 +357,7 @@
                 padding: 111px 20px;
             }
         }
+
         section::before {
             content: "";
             position: absolute;
@@ -340,9 +373,55 @@
             transform: translateY(0);
         }
 
+        .sobre-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .sobre-texto {
+            flex: 1;
+        }
+
+        .sobre-imagem {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sobre-imagem img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 1110px) {
+            .sobre-texto {
+                min-width: 650px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .sobre-container {
+                flex-direction: column;
+            }
+
+            .sobre-imagem {
+                order: 2;
+                /* imagem embaixo */
+                margin-top: 20px;
+            }
+
+            .sobre-texto {
+                order: 1;
+            }
+        }
+
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
         }
 
@@ -359,18 +438,24 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3); */
             display: flex;
+            flex-flow: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+
         }
 
-        .card:hover {
+        .card:hover,
+        .card.active {
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, 0.06),
-                0 0 0 1px rgba(157, 220, 175, 0.20),
-                0 0 25px rgba(157, 220, 175, 0.15) inset;
-            /* transform: translateY(-2px); */
-            transform: translateY(5px);
-            /* background: rgba(255, 255, 255, 0.75); */
+                0 0 0 1px rgba(157, 220, 175, 0.50),
+                0 0 50px rgba(157, 220, 175, 0.25) inset;
+            transform: translateY(-4px);
+        }
+
+        .card p {
+            color: var(--gray)
         }
 
         footer {
@@ -378,6 +463,30 @@
             padding: 40px;
             background: var(--primary);
             color: var(--bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        @media(min-width:768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            opacity: .8;
         }
 
         .socials {
@@ -523,56 +632,166 @@
         <!-- <i class="fas fa-bars menu-toggle" id="menuToggle"></i> -->
         <nav id="menu">
             <a href="#sobre">Sobre</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#insta">Instagram</a>
+            <a href="#atendimento">Como funciona</a>
+            <a href="#areas">Áreas de atuação</a>
+            <a href="#diferenciais">Diferenciais</a>
+            <a href="#contato">Contato</a>
         </nav>
         <div id="menuBtn">☰</div>
     </header>
 
     <section class="hero show">
         <div class="hero-slider" id="heroSlider">
-            <div class="hero-slide" alt="foto nutrição 1" style="background-image: url('hero1.webp');"></div>
-            <div class="hero-slide" alt="foto nutrição 2" style="background-image: url('hero2.webp');"></div>
-            <div class="hero-slide" alt="foto nutrição 3" style="background-image: url('hero3.webp');"></div>
-            <div class="hero-slide" alt="foto nutrição 4" style="background-image: url('hero4.webp');"></div>
+            <div class="hero-slide" alt="foto nutrição 1" style="background-image: url('img/hero1.webp');"></div>
+            <div class="hero-slide" alt="foto nutrição 2" style="background-image: url('img/hero2.webp');"></div>
+            <div class="hero-slide" alt="foto nutrição 3" style="background-image: url('img/hero3.webp');"></div>
+            <div class="hero-slide" alt="foto nutrição 4" style="background-image: url('img/hero4.webp');"></div>
         </div>
 
         <div class="hero-content">
-            <h1>Transforme sua alimentação</h1>
-            <p>Atendimento nutricional moderno, personalizado e focado em resultados.</p>
-            <a href="https://www.instagram.com/carolinarossinutri" class="btn" target="_blank">Acompanhe no
-                Instagram</a>
+            <h1>Nutrição que escuta o seu corpo — e respeita a sua história.</h1>
+            <p>Atendimento nutricional online com abordagem clínica e funcional, focado em saúde intestinal, alergias
+                alimentares e equilíbrio do organismo.</p>
+            <a href="https://wa.me/5548991755596" class="btn" target="_blank">Agendar consulta</a>
         </div>
     </section>
 
     <section id="sobre">
-        <h2>Sobre</h2>
-        <p>Nutricionista focada em acompanhamento/gestão nutricional para alergias e intolerâncias, saúde, emagrecimento
-            e performance com abordagem humanizada.</p>
+        <div class="sobre-container">
+
+            <div class="sobre-texto">
+                <!-- <h2>Sobre mim</h2> -->
+                <h2>Prazer, sou Carolina Rossi</h2>
+                <p>Eu acredito que cada corpo tem sua própria história e aprender a escutar os sinais é o primeiro passo
+                    para uma saúde de verdade.</p>
+                <p>Sou nutricionista formada desde 2008 pela Unisagrado (antiga Universidade do Sagrado Coração), com
+                    pós-graduação em nutrição clínica pela mesma instituição e formação em nutrição funcional, atuando
+                    com foco
+                    em alergias alimentares, saúde intestinal e condições específicas como APLV e doenças renais.</p>
+                <p>Aqui, o atendimento vai além de um plano alimentar: é um olhar individualizado, baseado em ciência,
+                    experiência clínica e acolhimento.</p>
+                <p>Ao longo da minha trajetória, busquei aprofundamento em áreas que hoje são fundamentais na minha
+                    prática:
+                    nutrição funcional, alergias alimentares e atendimento a pacientes com condições específicas, como
+                    doença
+                    renal.</p>
+                <p>Mas além da formação, minha atuação também é marcada por uma vivência muito pessoal: sou mãe de uma
+                    criança
+                    com APLV (Alergia à Proteína do Leite de Vaca).
+                    Foi a partir dessa experiência que meu olhar se tornou ainda mais sensível, empático e aprofundado
+                    para o
+                    cuidado com pacientes que enfrentam alergias alimentares — especialmente em bebês e crianças.</p>
+                <p>Hoje, uno conhecimento técnico, prática clínica e experiência real para oferecer um acompanhamento
+                    completo,
+                    humano e individualizado.</p>
+                <br>
+                <p>Credenciais:</p>
+                <p><b>CRN-10: 14.734</b></p>
+                <p>✔ Nutricionista desde 2008</p>
+                <p>✔ Pós-graduação em Nutrição Clínica</p>
+                <p>✔ Formação em Nutrição Funcional</p>
+                <p>✔ Formação em Alergias Alimentares</p>
+                <p>✔ Atendimento em Nutrição para Paciente Renal </p>
+            </div>
+
+            <div class="sobre-imagem">
+                <img src="img/foto2.webp" alt="Carolina Rossi Nutricionista">
+            </div>
+
+        </div>
     </section>
 
-    <section id="servicos">
-        <h2>Serviços</h2>
+    <section id="atendimento">
+        <h2>Como funciona o atendimento online</h2>
+        <p>O atendimento online é prático, acolhedor e totalmente personalizado.
+        <p>Durante a consulta, vamos conversar sobre sua rotina, sintomas, histórico de saúde, exames e objetivos. A
+            partir disso, elaboro uma estratégia nutricional individualizada — respeitando sua realidade, suas
+            preferências e o
+            que seu corpo precisa.</p>
+        <p>Você não recebe apenas um “cardápio pronto”, mas sim um plano pensado para ser possível, sustentável e
+            eficaz.</p>
+        <br>
+        <h3>O que está incluído: </h3>
         <div class="cards">
             <div class="card">
-                <h3>Terapia Nutricional na Alergia Alimentar</h3>
+                <h3>Avaliação completa do seu histórico</h3>
             </div>
             <div class="card">
-                <h3>Reeducação</h3>
+                <h3>Plano alimentar personalizado</h3>
             </div>
             <div class="card">
-                <h3>Emagrecimento</h3>
+                <h3>Orientações práticas para o dia a dia</h3>
             </div>
             <div class="card">
-                <h3>Performance</h3>
+                <h3>Ajustes conforme evolução</h3>
+            </div>
+            <div class="card">
+                <h3>Suporte durante o acompanhamento</h3>
+            </div>
+        </div>
+        <br>
+        <a href="https://wa.me/5548991755596" class="btn" target="_blank">Atendimento online</a>
+    </section>
+
+    <section id="areas">
+        <h2>Em que posso te ajudar</h2>
+        <p>Minha atuação é voltada para o cuidado integral, com foco nas causas — e não apenas nos sintomas.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Alergias alimentares (especialmente APLV)</h3>
+                <p>Acompanhamento de bebês, crianças e adultos com alergias alimentares, com orientação segura, prática
+                    e baseada em evidências.</p>
+            </div>
+            <div class="card">
+                <h3>Nutrição funcional</h3>
+                <p>Investigação de sintomas como inchaço, fadiga, alterações intestinais e inflamação, buscando
+                    equilíbrio do organismo.</p>
+            </div>
+            <div class="card">
+                <h3>Saúde intestinal</h3>
+                <p>O intestino tem papel central na saúde. Ajustes alimentares estratégicos podem transformar sintomas e
+                    qualidade de vida.</p>
+            </div>
+            <div class="card">
+                <h3>Nutrição clínica</h3>
+                <p>Atendimento para diversas condições de saúde com abordagem individualizada.</p>
+            </div>
+            <div class="card">
+                <h3>Paciente renal</h3>
+                <p>Plano alimentar adaptado às necessidades específicas, com cuidado e acompanhamento adequado.</p>
             </div>
         </div>
     </section>
 
-    <!-- <section id="contato">
-        <h2>Contato</h2>
-        <p>Em breve</p>
-    </section> -->
+    <section id="diferenciais">
+        <h2>Por que meu atendimento é diferente?</h2>
+        <p>Porque aqui você não é tratado como mais um caso.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Atendimento individualizado de verdade</h3>
+            </div>
+            <div class="card">
+                <h3>Integração entre nutrição clínica e funcional</h3>
+            </div>
+            <div class="card">
+                <h3>Experiência prática com alergias alimentares</h3>
+            </div>
+            <div class="card">
+                <h3>Olhar humano + base científica</h3>
+            </div>
+            <div class="card">
+                <h3>Foco em mudanças possíveis e sustentáveis</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <p>Se você sente que seu corpo está dando sinais — é hora de começar a escutar.</p>
+        <br>
+        <p>Eu posso te ajudar nesse processo.</p>
+        <br>
+        <a href="https://wa.me/5548991755596" class="btn" target="_blank">Agendar minha consulta</a>
+    </section>
 
     <!-- INSTA -->
     <section id="insta">
@@ -585,30 +804,46 @@
     </section>
 
     <footer>
-        <p>© 2026 Carolina Rossi - Todos os direitos reservados</p>
-        <div class="socials">
-            <a href="https://instagram.com/carolinarossinutri" target="_blank" aria-label="Instagram">
-                <svg viewBox="0 0 24 24">
-                    <path
-                        d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10z" />
-                </svg>
-            </a>
-            <!-- <a href="https://facebook.com/" target="_blank" aria-label="Facebook">
+        <div class="container footer-grid">
+            <div>
+                <h3>Carolina Rossi – Nutricionista</h3>
+                <p>CRN-10: 14.734</p>
+                <p>Atendimento online</p>
+            </div>
+            <div>
+                <h3>Contato</h3>
+                <p>(48) 99175-5596</p>
+                <p>Particular</p>
+            </div>
+            <div>
+                <h3>Redes Sociais</h3>
+                <div class="socials">
+                    <a href="https://instagram.com/carolinarossinutri" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10z" />
+                        </svg>
+                    </a>
+                    <!-- <a href="https://facebook.com/" target="_blank" aria-label="Facebook">
                 <svg viewBox="0 0 24 24">
                     <path
                         d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z" />
                 </svg>
             </a> -->
+                </div>
+            </div>
         </div>
+
+        <p>© 2026 Carolina Rossi - Todos os direitos reservados</p>
     </footer>
 
     <!-- Botão WhatsApp Fixo -->
-    <!-- <a href="https://wa.me/559999999999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/5548991755596" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path
                 d="M16 .4C7.2.4 0 7.6 0 16.4c0 2.9.8 5.7 2.2 8.1L0 32l7.7-2c2.3 1.3 4.9 2 7.6 2 8.8 0 16-7.2 16-16S24.8.4 16 .4zm0 29c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.3 6-13.3 13.3-13.3S29.7 9.1 29.7 16.4 23.7 29.4 16 29.4zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.2-.5.3-.9.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.8-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 3 0 1.7 1.3 3.4 1.5 3.6.2.2 2.6 4 6.4 5.4 3.8 1.4 3.8.9 4.5.9.7 0 2.4-1 2.7-2 .3-1 .3-1.9.2-2.1-.1-.2-.4-.3-.8-.5z" />
         </svg>
-    </a> -->
+    </a>
 
     <!-- <div class="top" id="topBtn"><i class="fas fa-arrow-up"></i></div> -->
 
@@ -703,6 +938,55 @@
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
+
+        //HOVER AUTOMATICA NO MOBILE
+        let scrollListenerActive = false;
+
+        function scrollMobile() {
+            const screenCenter = window.innerHeight / 2;
+
+            const elements = document.querySelectorAll('.card, .btn');
+            // console.log(elements);
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const elCenter = rect.top + rect.height / 2;
+                let distance_max = 70;
+                const distance = Math.abs(screenCenter - elCenter);
+
+                // if (el.className == 'feature') {
+                //     distance_max = 60;
+                // }
+
+                if (distance < distance_max) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+
+        function handleMobileEffects() {
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+            if (isMobile && !scrollListenerActive) {
+                window.addEventListener('scroll', scrollMobile);
+                scrollListenerActive = true;
+
+                // 🔥 roda uma vez ao carregar
+                scrollMobile();
+
+            } else if (!isMobile && scrollListenerActive) {
+                window.removeEventListener('scroll', scrollMobile);
+                scrollListenerActive = false;
+
+                document.querySelectorAll('.card, .btn')
+                    .forEach(el => el.classList.remove('active'));
+            }
+        }
+
+        // INIT
+        handleMobileEffects();
+        window.addEventListener('resize', handleMobileEffects);
     </script>
 
 </body>
