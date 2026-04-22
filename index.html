@@ -215,7 +215,7 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
-            color: var(--secondary);
+            color: var(--secondary) !important;
         }
 
         #menuOverlay {
@@ -394,6 +394,10 @@
             display: flex;
             align-items: center;
             gap: 40px;
+        }
+
+        #sobre p {
+            color: var(--secondary);
         }
 
         .sobre-texto {
@@ -666,7 +670,7 @@
             <a href="#diferenciais">Diferenciais</a>
             <a href="#contato">Contato</a>
         </nav>
-        <div id="menuBtn">☰</div>
+        <div id="menuBtn"><i class="fas fa-bars"></i></div>
     </header>
 
     <section class="hero show">
@@ -716,11 +720,11 @@
                 <br>
                 <p>Credenciais:</p>
                 <p><b>CRN-10: 14.734</b></p>
-                <p>✔ Nutricionista desde 2008</p>
-                <p>✔ Pós-graduação em Nutrição Clínica</p>
-                <p>✔ Formação em Nutrição Funcional</p>
-                <p>✔ Formação em Alergias Alimentares</p>
-                <p>✔ Atendimento em Nutrição para Paciente Renal </p>
+                <p><i class="fa-solid fa-check"></i> Nutricionista desde 2008</p>
+                <p><i class="fa-solid fa-check"></i> Pós-graduação em Nutrição Clínica</p>
+                <p><i class="fa-solid fa-check"></i> Formação em Nutrição Funcional</p>
+                <p><i class="fa-solid fa-check"></i> Formação em Alergias Alimentares</p>
+                <p><i class="fa-solid fa-check"></i> Atendimento em Nutrição para Paciente Renal </p>
             </div>
 
             <div class="sobre-imagem">
@@ -952,7 +956,7 @@
         function closeMenu() {
             nav.classList.remove('active');
             overlay.classList.remove('active');
-            menuBtn.innerHTML = '☰';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         }
 
         menuBtn.addEventListener('click', () => {
